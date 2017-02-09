@@ -106,20 +106,14 @@ return [
     'url_controller_layer'   => 'controller',
     // 表单请求类型伪装变量
     'var_method'             => '_method',
-    // 表单ajax伪装变量
-    'var_ajax'               => '_ajax',
-    // 表单pjax伪装变量
-    'var_pjax'               => '_pjax',
-    // 是否开启请求缓存 true自动缓存 支持设置请求缓存规则
-    'request_cache'          => false,
-    // 请求缓存有效期
-    'request_cache_expire'   => null,
 
     // +----------------------------------------------------------------------
     // | 模板设置
     // +----------------------------------------------------------------------
 
     'template'               => [
+        'layout_on'     =>  true,
+        'layout_name'   =>  'layout',
         // 模板引擎类型 支持 php think 支持扩展
         'type'         => 'Think',
         // 模板路径
@@ -139,9 +133,13 @@ return [
     ],
 
     // 视图输出字符串内容替换
-    'view_replace_str'       => [
+    'view_replace_str'=>[
         '__PUBLIC__'  =>  '/wkzb/public'
     ],
+  'uploads'               =>[
+        'customer_uploads'=>ROOT_PATH . 'public' . DS . 'customer_uploads',
+    ],
+
     // 默认跳转页面对应的模板文件
     'dispatch_success_tmpl'  => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
     'dispatch_error_tmpl'    => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',

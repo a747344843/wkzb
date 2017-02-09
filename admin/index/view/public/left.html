@@ -1,0 +1,89 @@
+<script>
+    $(function(){
+        $('a').click(function(){
+            var _this=$(this);
+            var text=_this.html();
+            var url=_this.attr('href');
+            var one=$('input[name="one"]').val();
+            var two=$('input[name="two"]').val();
+            $('#content').panel({title:one+'->'+two+'->'+'<a target="tt" href="'+url+'">'+text+'</a>'});
+        });
+    });
+</script>
+<div region="west" split="true" title="菜单" style="width:20%;">
+<div class="easyui-panel" style="padding:5px;">
+    <input type="hidden" name="one" value="微客播后台管理">
+    <input type="hidden" name="two" value="微客播后台管理">
+    <ul class="easyui-tree">
+        <li>
+            <span>微客播后台管理</span>
+            <ul>
+                <li>
+                    <span>直播分类</span>
+                    <ul>
+                        <li>
+                            <span><a href="{:url('index/Type/show')}" target="tt">类别展示</a></span>
+                        </li>
+                        <li>
+                            <span><a href="{:url('index/Type/add')}" target="tt">添加类别</a></span>
+                        </li>
+                    </ul>
+                    </li>
+                <li>
+                    <span id="two5">用户管理</span>
+                    <ul>
+                        <li>
+                            <span><a href="{:url('index/User/show')}" target="tt">用户管理</a></span>
+                        </li>
+                        <li>
+                            <span><a href="{:url('index/Anchor/show')}" target="tt">主播管理</a></span>
+                        </li>
+                    </ul>
+                </li>                    
+                <li>
+                    <span id="two2">礼物管理</span>
+                    <ul>
+                        <li>
+                            <span><a href="{:url('index/price/show')}" target="tt">礼物展示</a></span>
+                        </li>
+                        <li>
+                            <span><a href="{:url('index/price/add')}" target="tt">礼物上架</a></span>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <span id="two3">个人设置</span>
+                    <ul>
+                        <li>
+                            <span><a href="{:url('index/personal/password')}" target="tt">密码设置</a></span>
+                        </li>
+                        <li>
+                            <span><a href="javascript:void(0)" onclick="return quit()" target="tt">退出</a></span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+</div>
+<script>
+    function quit()
+    {
+        if(confirm("确定要退出吗？"))
+        {
+            $.post("{:url('personal/quit')}",function(data)
+            {
+                if(data==1)
+                {
+                    location.href="login/login";
+                    location.reload()
+                }
+            })
+        }
+        else
+        {
+            return false;
+        }
+    }
+</script>
